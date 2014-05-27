@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="glew.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4_SSE.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCore.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreBMP.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreDDS.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreFileUtility.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreImage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreInput.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreMem.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreModel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreModel_OpenGL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreOpenGL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreTexture_OpenGL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreTGA.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreTimer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreUserControl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="HCoreWin32.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4x4_Reference.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4x4_SSE.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4_Reference.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FastMath.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="glew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="glxew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCore.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreBMP.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreDDS.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreDefs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreFileUtility.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreImage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreInput.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreMem.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreModel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreModel_OpenGL.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreOpenGL.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreTexture_OpenGL.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreTGA.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreTimer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreUserControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="HCoreWin32.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4_Reference.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4_SSE.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="wglew.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4_Reference.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4x4_SSE.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{27cdeff6-31ee-4024-beb6-7352d8d93e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{ea4f0776-f313-4996-b6fb-cb7874b47578}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,47 @@
+varying vec4 diffuse,ambient;
+varying vec3 normal, lightDir, halfVector;
+uniform vec3 LightPosition;
+varying float nhigh;
+varying float triadZ;
+varying float triadX;
+varying vec4 vposition;
+varying vec2 TexCoord;
+uniform sampler2D tex;
+
+varying vec3 voutN;
+varying vec3 voutL;
+varying vec3 voutV;
+
+void main(void)
+{  
+	//获取点位置
+	vec4 P = gl_ModelViewMatrix * gl_Vertex;
+	//计算法线、灯光距离、深度
+    voutN = mat3(gl_ModelViewMatrix) * gl_Normal;
+    voutL = LightPosition - P.xyz;
+    voutV = -P.xyz;
+    
+	//输出点位置
+	vposition = gl_ModelViewMatrix * gl_Vertex;
+	//输出法线向量
+    normal = normalize(gl_NormalMatrix * gl_Normal);
+	//输出灯光朝向
+    lightDir = normalize(vec3(LightPosition));
+	//计算聚光
+    halfVector = normalize(gl_LightSource[0].halfVector.xyz);
+	//计算漫反射及环境光
+    diffuse = gl_FrontMaterial.diffuse * gl_LightSource[0].diffuse;
+    ambient = gl_FrontMaterial.ambient * gl_LightSource[0].ambient;
+    ambient += gl_LightModel.ambient * gl_FrontMaterial.ambient;    
+ 
+	//获取位置及高度信息
+    vec4 f = vec4(gl_Vertex);
+    nhigh =  f.z;  
+    triadZ = f.y;
+    triadX = f.x;    
+	
+	//输出纹理坐标
+    TexCoord = gl_MultiTexCoord0.st;  
+	//计算点位置
+    gl_Position = ftransform();  			
+}

@@ -1,0 +1,106 @@
+uniform sampler2D texture0;
+uniform sampler2D texture1;
+
+uniform vec2 camerarange;
+uniform vec2 screensize;
+uniform float fNearClipPlane;
+uniform float fFarClipPlane;
+
+uniform bool flag;
+uniform bool randomize_points;
+uniform bool show_normal;
+uniform bool show_original;
+
+varying vec2 texCoord;
+
+uniform float fTime0_2PI;
+uniform float ssao_radius;
+uniform float object_level;
+uniform float ssao_level;
+
+uniform vec4 randpos[256];
+uniform vec4 randvectors[256];
+
+
+vec4 forFunc1()
+{
+   //依据视口大小计算法线纹理矩阵
+   vec2 P = gl_FragCoord.xy / vec2(screensize.x,screensize.y);//textureSize(texture0, 0);
+   vec4 ND = texture2D( texture0, P );
+   //得到法线信息
+   vec3 N = ND.xyz;
+   //是否显示法线、深度
+   if(show_normal)
+   	return ND;
+	//得到深度
+   float my_depth = ND.w;
+   
+   //临时参数
+   float i;
+   float j;
+   int n;
+   float occ = 0.0;
+   float total = 0.0;
+   //计算随机数
+   n = (int(gl_FragCoord.x * 7123.2315 + 125.232) *
+         int(gl_FragCoord.y * 3137.1519 + 234.8)) *
+        int(my_depth);
+   int nn = n % 255 ;
+   //取消随机取点，有抖动问题
+   //vec4 v = randvectors[nn];
+   //通过深度信息计算伪随机点
+   vec4 v = normalize(vec4(my_depth,my_depth,my_depth,my_depth));
+   //随机采集半径
+   float r = (v.r + 3.0) * 0.1;
+   //或者固定采集半径
+   if (!randomize_points)
+   r = 0.8;
+   
+   //float zt = fract(fTime0_2PI * 0.15 * my_depth);
+   //通过随机数计算采集点是否存在面法线交集，及超出采集点距离，最终决定当前点的遮蔽值
+   for (i = 0; i < 8; i++)
+   {
+      vec3 dir = randpos[i].xyz;
+      //vec3 dir = vec3( normalize(zt / i), normalize(zt / (i+1)), normalize(zt / (i+2)) );
+      if (dot(N, dir) < 0.0)
+            dir = -dir;
+      float f = 0.0;
+      float z = my_depth;
+      total += 4.0;
+      for (j = 0; j < 4; j++)
+        {
+           f += r;
+           z -= dir.z * f;
+           float their_depth = texture2D(texture0,(P + dir.xy * f * ssao_radius)).w;
+           float d = abs(their_depth - my_depth);
+           d *= d;
+           if ((z - their_depth) > 0.0)
+            {
+                occ += 4.0 / (1.0 + d);
+            }
+        }
+   }
+	//最终的环境光遮蔽值
+   float ao_amount = 1.0 - occ / total;
+   //获取原帧缓存颜色
+   vec4 object_color =  texture2D(texture1, P);
+   //是否显示原帧缓存
+	 if(show_original)
+	 	return object_color;
+	//显示SSAO像素采样图像 或 最终合成图像
+   if(flag)
+   {
+    	return object_level * object_color + mix(vec4(0.2), vec4(ao_amount), ssao_level);
+   }
+   else
+   {
+   		return mix(vec4(0.2), vec4(ao_amount), ssao_level);
+   }
+   
+}
+
+void main(void)
+{  
+  gl_FragColor = forFunc1();
+
+}
